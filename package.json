@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npm run test",
+    "test": "tape tests/db_test.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
