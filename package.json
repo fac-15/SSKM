@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "tape tests/db_test.js",
+    "test-db": "node ./tests/routes.tests.js | tap-spec",
     "dev": "nodemon src/index.js"
   },
   "repository": {
