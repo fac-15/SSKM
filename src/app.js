@@ -76,15 +76,9 @@ app.post("/add-tech", (req, res) => {
     (err, res) => {
       if (err) {
         console.log(err);
-      } else {
-        // res.redirect("/");
-        // response.render("technology", {
-        //   tech: res
-        // });
       }
     }
   );
   res.redirect("/");
-  // });
 });
 module.exports = app;
