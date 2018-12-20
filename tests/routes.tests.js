@@ -28,9 +28,9 @@ test("add-tech is getting a status of 200", t => {
     });
 });
 
-test("tech-info is getting a status of 200", t => {
+test("technology is getting a status of 200", t => {
   request(app)
-    .get("/tech-info")
+    .get("/technology/:name")
     .end((err, res) => {
       if (err) {
         return `You have an error: ${err}`;
