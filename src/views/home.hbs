@@ -3,14 +3,13 @@
 
 
 {{#each techs}}
-<ul>
-  <li><h3>{{name}}<h3></li>
-  <li>{{description}}</li>
-  <li>{{language}}</li>
-  <li>{{author}}</li>
-  <li>{{rating}}</li>
+  <a href = './technology/{{this.name}}'><h3>Technology: {{name}}<h3></a>
+  {{!-- <li>Description: {{description}}</li> --}}
+  <li>Language: {{language}}</li>
+  {{!-- <li>Author: {{author}}</li> --}}
+  {{!-- <li>Rating: {{rating}}</li> --}}
 </ul>
 {{/each}}
 
 <a href = "./add-tech">Add-tech</a>
-<a href = "./tech-info">Tech-Info</a>
+<a href = "./technology">Tech-Info</a>

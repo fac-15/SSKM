@@ -17,7 +17,7 @@ const getData = cb => {
 tape("test getData function to get a name of tech", t => {
   dbBuild(function(error, response) {
     if (error) return console.log("ERROR IN DBBUILD: " + error);
-    getData(function(err, res) {
+    (function(err, res) {
       if (err) return console.log("ERROR IN GETDATA: " + err);
       t.equals(
         res[0].name,
