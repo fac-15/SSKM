@@ -1,4 +1,13 @@
 {{>header}}
 
 <h2>tech info</h2>
+{{#each techs}}
+<ul>
+  <li><h3>{{name}}<h3></li>
+  <li>{{description}}</li>
+  <li>{{language}}</li>
+  <li>{{author}}</li>
+  <li>{{rating}}</li>
+</ul>
+{{/each}}
 <a href = "./add-tech">Add a tech</a>

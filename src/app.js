@@ -4,24 +4,6 @@ const exphbs = require("express-handlebars");
 const helpers = require("./views/helpers/index");
 const controllers = require('./controllers/index')
 
-// require data from db
-// const techdata = [
-//   {
-//     name: "Handlebars",
-//     description: "It's great!",
-//     language: "JavaScript",
-//     rating: true,
-//     author: "Susan"
-//   },
-//   {
-//     name: "Express",
-//     description: "It's awesome!",
-//     language: "JavaScript",
-//     rating: true,
-//     author: "Michal"
-//   }
-// ];
-
 const app = express();
 
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -40,7 +22,6 @@ app.engine(
 
 
 app.get("/", (req, response) => {
- 
   controllers.getAllData((err, res) => {
     if (err) {
         console.log(err)
@@ -52,14 +33,19 @@ app.get("/", (req, response) => {
   })
 });
 
+app.get("/tech-info", (req, response) => {
+  controllers.getTech('Tape', (err, res) => {
+    if (err) console.log(err);
+    response.render("tech-info", {
+      techs: res
+    });
+  });
+});
+
 app.get("/add-tech", (req, res) => {
-  console.log("add-tech is working");
   res.render("add-tech", {});
 });
 
-app.get("/tech-info", (req, res) => {
-  console.log("tech-infor is working");
-  res.render("tech-info", {});
-});
+
 
 module.exports = app;

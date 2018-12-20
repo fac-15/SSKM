@@ -1,3 +1,4 @@
 module.exports = {
-    getAllData: require('./getAllData')
+    getAllData: require('./getAllData'),
+    getTech: require('./getTech')
 }
