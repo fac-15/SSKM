@@ -2,24 +2,25 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const helpers = require("./views/helpers/index");
+const controllers = require('./controllers/index')
 
 // require data from db
-const techdata = [
-  {
-    name: "Handlebars",
-    description: "It's great!",
-    language: "JavaScript",
-    rating: true,
-    author: "Susan"
-  },
-  {
-    name: "Express",
-    description: "It's awesome!",
-    language: "JavaScript",
-    rating: true,
-    author: "Michal"
-  }
-];
+// const techdata = [
+//   {
+//     name: "Handlebars",
+//     description: "It's great!",
+//     language: "JavaScript",
+//     rating: true,
+//     author: "Susan"
+//   },
+//   {
+//     name: "Express",
+//     description: "It's awesome!",
+//     language: "JavaScript",
+//     rating: true,
+//     author: "Michal"
+//   }
+// ];
 
 const app = express();
 
@@ -37,11 +38,18 @@ app.engine(
   })
 );
 
-app.get("/", (req, res) => {
-  console.log("home is working");
-  res.render("home", {
-    techs: techdata
-  });
+
+app.get("/", (req, response) => {
+ 
+  controllers.getAllData((err, res) => {
+    if (err) {
+        console.log(err)
+    } else {
+      response.render("home", {
+        techs: res.rows
+      });
+    }
+  })
 });
 
 app.get("/add-tech", (req, res) => {
