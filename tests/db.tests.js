@@ -37,7 +37,7 @@ tape("test getData function to get description of tech", t => {
       t.equals(
         res[1].description,
         "Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.",
-        "Location of second restaurant should be 'Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.'"
+        "Description of second tech should be 'Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.'"
       );
       t.end();
     });
