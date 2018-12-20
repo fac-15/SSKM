@@ -67,9 +67,24 @@ app.post("/add-tech", (req, res) => {
   console.log("from app.js post req.body:", req.body.author);
   console.log("from app.js post req.body:", req.body.rating);
 
-  // console.log("from app.js post res:", res);
-
+  controllers.postTech(
+    req.body.name,
+    req.body.description,
+    req.body.language,
+    req.body.author,
+    req.body.rating,
+    (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // res.redirect("/");
+        // response.render("technology", {
+        //   tech: res
+        // });
+      }
+    }
+  );
   res.redirect("/");
+  // });
 });
-
 module.exports = app;
