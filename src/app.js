@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const helpers = require("./views/helpers/index");
-const controllers = require('./controllers/index')
+const controllers = require('./controllers/index');
 
 const app = express();
 
@@ -33,14 +33,29 @@ app.get("/", (req, response) => {
   })
 });
 
-app.get("/tech-info", (req, response) => {
-  controllers.getTech('Tape', (err, res) => {
-    if (err) console.log(err);
-    response.render("tech-info", {
-      techs: res
-    });
-  });
+// router.get("/technology/:name", (req, response) => {
+//   console.log(name);
+//   controllers.getTech(name, (err, res) => {
+//     if (err) console.log(err);
+//     response.render("technology", {
+//       techs: res
+//     });
+//   });
+// });
+
+
+app.get('/technology/:name', ({ params: { name } }, response) => {
+  controllers.getTech(name, (err, res) => {
+    if (err) {
+        console.log(err)
+    } else {
+      response.render("technology", {
+        tech: res
+      });
+    }
+  })
 });
+
 
 app.get("/add-tech", (req, res) => {
   res.render("add-tech", {});
