@@ -2,25 +2,7 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const helpers = require("./views/helpers/index");
-const controllers = require('./controllers/index')
-
-// require data from db
-// const techdata = [
-//   {
-//     name: "Handlebars",
-//     description: "It's great!",
-//     language: "JavaScript",
-//     rating: true,
-//     author: "Susan"
-//   },
-//   {
-//     name: "Express",
-//     description: "It's awesome!",
-//     language: "JavaScript",
-//     rating: true,
-//     author: "Michal"
-//   }
-// ];
+const controllers = require('./controllers/index');
 
 const app = express();
 
@@ -40,7 +22,6 @@ app.engine(
 
 
 app.get("/", (req, response) => {
- 
   controllers.getAllData((err, res) => {
     if (err) {
         console.log(err)
@@ -52,14 +33,34 @@ app.get("/", (req, response) => {
   })
 });
 
+// router.get("/technology/:name", (req, response) => {
+//   console.log(name);
+//   controllers.getTech(name, (err, res) => {
+//     if (err) console.log(err);
+//     response.render("technology", {
+//       techs: res
+//     });
+//   });
+// });
+
+
+app.get('/technology/:name', ({ params: { name } }, response) => {
+  controllers.getTech(name, (err, res) => {
+    if (err) {
+        console.log(err)
+    } else {
+      response.render("technology", {
+        tech: res
+      });
+    }
+  })
+});
+
+
 app.get("/add-tech", (req, res) => {
-  console.log("add-tech is working");
   res.render("add-tech", {});
 });
 
-app.get("/tech-info", (req, res) => {
-  console.log("tech-infor is working");
-  res.render("tech-info", {});
-});
+
 
 module.exports = app;
