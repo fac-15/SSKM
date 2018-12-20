@@ -1,21 +1,21 @@
+{{>head}}
 {{>header}}
 
 
 <body>
-
-
+<h1>Search and Review <span id='technologyH1'>Technology</span></h1>
+<input id='search' type='text' placeholder="Search"  />
+<section id='container'>
 {{#each techs}}
-<section id='tech'>
-  <ul>
-    <h3>{{name}}<h3>
-    <li>{{description}}</li>
-    <li>{{language}}</li>
-    <li>{{author}}</li>
-    <li>{{rating}}</li>
-  </ul>
-</section>
+<ul>
+<!-- <section id='tech'> -->
+  <li>{{name}}</li>
+<!-- </section> -->
+</ul>
 
 {{/each}}
+</section>
 </body>
+
 <a href = "./add-tech">Add-tech</a>
 <a href = "./technology">Tech-Info</a>
