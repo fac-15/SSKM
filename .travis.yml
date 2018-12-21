@@ -1,0 +1,20 @@
+services:
+  - postgresql
+  
+env:
+  - DB=postgres
+  - DB_URL=postgres://admin:password@localhost:5432/techdatabase
+  - TEST_DB_URL=postgres://admin:password@localhost:5432/techdatabaseTest
+
+language: node_js
+node_js :
+ - "node"
+after_success: npm run test
+
+before_script:
+  - psql -c "CREATE DATABASE techdatabase;" -U postgres
+  - psql -c "CREATE DATABASE techdatabaseTest;" -U postgres
+  - psql -c "CREATE USER admin WITH PASSWORD 'password';" -U postgres
+  - psql -c "ALTER DATABASE techdatabase OWNER TO admin;" -U postgres
+  - psql -c "ALTER DATABASE techdatabaseTest OWNER to admin;" -U postgres
+  
