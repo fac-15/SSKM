@@ -32,16 +32,6 @@ app.get("/", (req, response) => {
   });
 });
 
-// router.get("/technology/:name", (req, response) => {
-//   console.log(name);
-//   controllers.getTech(name, (err, res) => {
-//     if (err) console.log(err);
-//     response.render("technology", {
-//       techs: res
-//     });
-//   });
-// });
-
 app.get("/technology/:name", ({ params: { name } }, response) => {
   controllers.getTech(name, (err, res) => {
     if (err) {
@@ -71,12 +61,14 @@ app.post("/add-tech", (req, res) => {
     req.body.language,
     req.body.author,
     req.body.rating,
-    (err, res) => {
+    (err, result) => {
       if (err) {
         console.log(err);
+      } else {
+        res.redirect("/");
       }
     }
   );
-  res.redirect("/");
+  
 });
 module.exports = app;
