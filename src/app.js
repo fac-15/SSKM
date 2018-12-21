@@ -32,16 +32,6 @@ app.get("/", (req, response) => {
   });
 });
 
-// router.get("/technology/:name", (req, response) => {
-//   console.log(name);
-//   controllers.getTech(name, (err, res) => {
-//     if (err) console.log(err);
-//     response.render("technology", {
-//       techs: res
-//     });
-//   });
-// });
-
 app.get("/technology/:name", ({ params: { name } }, response) => {
   controllers.getTech(name, (err, res) => {
     if (err) {

@@ -3,8 +3,7 @@ services:
   
 env:
   - DB=postgres
-  - DB_URL=postgres://admin:password@localhost:5432/techdatabase
-  - TEST_DB_URL=postgres://admin:password@localhost:5432/techdatabaseTest
+  - DB_URL=postgres://postgres:@localhost:5432/techdatabase
 
 language: node_js
 node_js :
