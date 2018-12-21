@@ -51,11 +51,6 @@ app.get("/add-tech", (req, res) => {
 });
 
 app.post("/add-tech", (req, res) => {
-  console.log("from app.js post req.body:", req.body.name);
-  console.log("from app.js post req.body:", req.body.description);
-  console.log("from app.js post req.body:", req.body.language);
-  console.log("from app.js post req.body:", req.body.author);
-  console.log("from app.js post req.body:", req.body.rating);
 
   controllers.postTech(
     req.body.name,
@@ -80,5 +75,6 @@ app.use((err, req, res, next) => {
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "..", "public", "404.html"));
 });
+
 
 module.exports = app;
