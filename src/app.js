@@ -34,16 +34,6 @@ app.get("/", (req, response) => {
   });
 });
 
-// router.get("/technology/:name", (req, response) => {
-//   console.log(name);
-//   controllers.getTech(name, (err, res) => {
-//     if (err) console.log(err);
-//     response.render("technology", {
-//       techs: res
-//     });
-//   });
-// });
-
 app.get("/technology/:name", ({ params: { name } }, response) => {
   controllers.getTech(name, (err, res) => {
     if (err) {
@@ -61,11 +51,6 @@ app.get("/add-tech", (req, res) => {
 });
 
 app.post("/add-tech", (req, res) => {
-  console.log("from app.js post req.body:", req.body.name);
-  console.log("from app.js post req.body:", req.body.description);
-  console.log("from app.js post req.body:", req.body.language);
-  console.log("from app.js post req.body:", req.body.author);
-  console.log("from app.js post req.body:", req.body.rating);
 
   controllers.postTech(
     req.body.name,
@@ -81,4 +66,23 @@ app.post("/add-tech", (req, res) => {
   );
   res.redirect("/");
 });
+
+app.delete("/add-tech", (req, res) => {
+
+  controllers.deleteTech(
+    req.body.name,
+    req.body.description,
+    req.body.language,
+    req.body.author,
+    req.body.rating,
+    (err, res) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+  res.redirect("/");
+});
+
+
 module.exports = app;

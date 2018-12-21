@@ -112,3 +112,21 @@ footer a {
 p {
   color: black;
 }
+
+.techInfoLabel {
+  font-size: 1.5em;
+}
+
+#nameLabel {
+  font-size: 3em;
+  color: black;
+}
+
+.techInfoP {
+  padding: 1%;
+  margin-right: 300px;
+  font-size: 0.5em;
+  text-indent: 500px;
+  color: black;
+
+}
