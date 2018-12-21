@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
-const helpers = require("./views/helpers/index");
 const controllers = require("./controllers/index");
 const bodyparser = require("body-parser");
 const app = express();
@@ -17,14 +16,15 @@ app.engine(
     extname: "hbs",
     layoutsDir: path.join(__dirname, "views", "layouts"),
     partialsDir: path.join(__dirname, "views", "partials"),
-    defaultLayout: "main",
-    helpers: helpers
+    defaultLayout: "main"
   })
 );
 
 app.get("/", (req, response) => {
+  // someFunction();
   controllers.getAllData((err, res) => {
     if (err) {
+      console.log("err");
       console.log(err);
     } else {
       response.render("home", {
@@ -33,16 +33,6 @@ app.get("/", (req, response) => {
     }
   });
 });
-
-// router.get("/technology/:name", (req, response) => {
-//   console.log(name);
-//   controllers.getTech(name, (err, res) => {
-//     if (err) console.log(err);
-//     response.render("technology", {
-//       techs: res
-//     });
-//   });
-// });
 
 app.get("/technology/:name", ({ params: { name } }, response) => {
   controllers.getTech(name, (err, res) => {
@@ -81,4 +71,13 @@ app.post("/add-tech", (req, res) => {
   );
   res.redirect("/");
 });
+
+app.use((err, req, res, next) => {
+  res.status(500).sendFile(path.join(__dirname, "..", "public", "500.html"));
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "..", "public", "404.html"));
+});
+
 module.exports = app;
