@@ -20,11 +20,20 @@ input#search {
   border: 0;
   font-weight: 700;
   font-size: 2em;
-
+  margin: 20px;
+  width: 6em;
+  height: 3em;
 }
 ::placeholder {
   color: black;
   font-size: 1em;
+}
+
+::text {
+  color: red;
+  font-size: 1em;
+  font-family: "Lato", sans-serif;
+background: pink;
 }
 
 h1 {
@@ -41,7 +50,9 @@ h3 {
   color: #fff;
   font-size: 3em;
 }
-
+form {
+  margin-top: 5em;
+}
 p {
   color: #fff;
   font-size: .5em;
@@ -119,6 +130,7 @@ footer a {
 p {
   color: black;
 }
+
 
 @media only screen and (max-width: 600px) {
   h1 {
