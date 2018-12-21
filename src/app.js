@@ -21,8 +21,10 @@ app.engine(
 );
 
 app.get("/", (req, response) => {
+  // someFunction();
   controllers.getAllData((err, res) => {
     if (err) {
+      console.log("err");
       console.log(err);
     } else {
       response.render("home", {
@@ -31,16 +33,6 @@ app.get("/", (req, response) => {
     }
   });
 });
-
-// router.get("/technology/:name", (req, response) => {
-//   console.log(name);
-//   controllers.getTech(name, (err, res) => {
-//     if (err) console.log(err);
-//     response.render("technology", {
-//       techs: res
-//     });
-//   });
-// });
 
 app.get("/technology/:name", ({ params: { name } }, response) => {
   controllers.getTech(name, (err, res) => {
@@ -59,11 +51,6 @@ app.get("/add-tech", (req, res) => {
 });
 
 app.post("/add-tech", (req, res) => {
-  console.log("from app.js post req.body:", req.body.name);
-  console.log("from app.js post req.body:", req.body.description);
-  console.log("from app.js post req.body:", req.body.language);
-  console.log("from app.js post req.body:", req.body.author);
-  console.log("from app.js post req.body:", req.body.rating);
 
   controllers.postTech(
     req.body.name,
@@ -71,12 +58,23 @@ app.post("/add-tech", (req, res) => {
     req.body.language,
     req.body.author,
     req.body.rating,
-    (err, res) => {
+    (err, result) => {
       if (err) {
         console.log(err);
+      } else {
+        res.redirect("/");
       }
     }
   );
-  res.redirect("/");
 });
+
+app.use((err, req, res, next) => {
+  res.status(500).sendFile(path.join(__dirname, "..", "public", "500.html"));
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "..", "public", "404.html"));
+});
+
+
 module.exports = app;

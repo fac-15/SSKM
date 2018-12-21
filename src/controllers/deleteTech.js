@@ -1,9 +1,7 @@
 const dbConnection = require('../../db/db_connection')
 
-const getTech = (techName, cb) => {
-    dbConnection.query(`SELECT * FROM tech WHERE name=$1`,
-    [techName],
-    (err, res) => {
+const deleteTech = (techName, cb) => {
+    dbConnection.query(`DELETE * FROM tech WHERE tech.name = '${techName}'`, (err, res) => {
         if (err){
             cb(err);
         } else {
@@ -12,4 +10,5 @@ const getTech = (techName, cb) => {
     })
 }
 
-module.exports = getTech;
+
+module.exports = deleteTech;
