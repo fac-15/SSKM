@@ -7,16 +7,38 @@
 /* font-family: 'PT Sans', sans-serif; */
 
 body {
-  background: #f5e8d6;
+  background: #F0F0F0;
+  background: #455AFB;
   font-family: "Lato", sans-serif;
   font-size: 1em;
   color: gray;
   padding: 3em;
+  background: #be95c4;
 }
-
+input#search {
+  background: #e0c1eb;
+  border: 0;
+  font-weight: 700;
+  font-size: 2em;
+}
 h1 {
+  color: #F0F0F0
   text-align: center;
   font-size: 2.5em;
+  color: #F0F0F0;
+  text-transform: lowercase;
+}
+h2 {
+  color: #F0F0F0;
+}
+h3 {
+  color: #fff;
+  font-size: 3em;
+}
+
+p {
+  color: #fff;
+  font-size: .5em;
 }
 
 #technologyH1 {
@@ -26,6 +48,7 @@ h1 {
   font-size: 3em;
   display: block;
   padding-bottom: 0.5em;
+  text-transform: lowercase;
 }
 
 #search {
@@ -49,8 +72,10 @@ h1 {
   margin: 10px;
   padding: 10px;
 }
+
 li {
-  color: white;
+  /* color: white; */
+    color: black;
   font-weight: 700;
   font-family: "PT Sans", sans-serif;
   float: left;
@@ -62,11 +87,19 @@ li {
   width: 200px;
   height: 150px;
   border-radius: 10px;
-  background: #641651;
-}
+  background:#E7D8D4;/* (light pink) */
+  background: #EEA095;/* (medium pink) */
 
+  background: #fff;
+  /* background: #455AFB;  */
+  /*(blue)  */
+}
+/* li:nth-child(3){
+  background: pink;
+} not working */
 a {
-  color: white;
+    /* color: white; */
+      color: black;
 }
 
 footer a {
