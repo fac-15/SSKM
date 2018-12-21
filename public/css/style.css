@@ -20,7 +20,13 @@ input#search {
   border: 0;
   font-weight: 700;
   font-size: 2em;
+
 }
+::placeholder {
+  color: black;
+  font-size: 1em;
+}
+
 h1 {
   color: #F0F0F0
   text-align: center;
@@ -98,8 +104,9 @@ li {
   background: pink;
 } not working */
 a {
-    /* color: white; */
-      color: black;
+  color: black;
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
 footer a {
