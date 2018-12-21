@@ -3,11 +3,11 @@
 
 <h2>tech info</h2>
 {{#each tech}}
-<ul>
-  <p><h3>{{name}}<h3></p>
-  <p>{{description}}</p>
-  <p>{{language}}</p>
-  <p>{{author}}</p>
-  <p>{{rating}}</p>
+<ul class='techInfo'>
+  <h3 class='techInfoLabel'>technology: <span id='nameLabel'>{{name}}</span><span><br>
+  <span class='techInfoLabel'>description: <span class='techInfoP'>{{description}}</span><span><br>
+  <span class='techInfoLabel'>language: <span class='techInfoP'>{{language}}</span><span><br>
+  <span class='techInfoLabel'>author: <span class='techInfoP'>{{author}}</span><span><br>
+  <span class='techInfoLabel'>thumbs: <span class='techInfoP'>{{rating}}</span><span><br>
 </ul>
 {{/each}}
