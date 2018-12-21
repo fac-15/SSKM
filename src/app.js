@@ -21,8 +21,10 @@ app.engine(
 );
 
 app.get("/", (req, response) => {
+  // someFunction();
   controllers.getAllData((err, res) => {
     if (err) {
+      console.log("err");
       console.log(err);
     } else {
       response.render("home", {
@@ -64,24 +66,14 @@ app.post("/add-tech", (req, res) => {
       }
     }
   );
-  
 });
 
-app.delete("/add-tech", (req, res) => {
+app.use((err, req, res, next) => {
+  res.status(500).sendFile(path.join(__dirname, "..", "public", "500.html"));
+});
 
-  controllers.deleteTech(
-    req.body.name,
-    req.body.description,
-    req.body.language,
-    req.body.author,
-    req.body.rating,
-    (err, res) => {
-      if (err) {
-        console.log(err);
-      }
-    }
-  );
-  res.redirect("/");
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "..", "public", "404.html"));
 });
 
 
