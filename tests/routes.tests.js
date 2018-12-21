@@ -15,6 +15,7 @@ test("add-tech is getting a status of 200", t => {
     });
 });
 
+
 test("technology is getting a status of 200", t => {
   request(app)
     .get("/technology/Tape")
