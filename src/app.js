@@ -63,13 +63,14 @@ app.post("/add-tech", (req, res) => {
     req.body.language,
     req.body.author,
     req.body.rating,
-    (err, res) => {
+    (err, result) => {
       if (err) {
         console.log(err);
+      } else {
+        res.redirect("/");
       }
     }
   );
-  res.redirect("/");
 });
 
 app.use((err, req, res, next) => {

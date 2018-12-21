@@ -15,3 +15,5 @@ const postTech = (name, description, language, author, rating, cb) => {
 };
 
 module.exports = postTech;
+
+
